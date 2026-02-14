@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>企业个人信息保护合规自查</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a2e;
+  --ink-light: #4a4a5a;
+  --ink-muted: #8a8a9a;
+  --paper: #faf9f7;
+  --paper-warm: #f5f0e8;
+  --accent: #c4553a;
+  --accent-hover: #a8432b;
+  --accent-light: #fdf0ed;
+  --green: #2d7d5f;
+  --green-light: #edf7f2;
+  --amber: #b8860b;
+  --amber-light: #fdf6e3;
+  --red: #c4553a;
+  --red-light: #fdf0ed;
+  --border: #e8e4de;
+  --shadow-sm: 0 1px 3px rgba(26,26,46,0.06);
+  --shadow-md: 0 4px 16px rgba(26,26,46,0.08);
+  --shadow-lg: 0 8px 32px rgba(26,26,46,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === LAYOUT === */
+.container {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === HEADER === */
+.header {
+  padding: 40px 0 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 32px;
+}
+
+.header-badge {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.header h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.header p {
+  font-size: 15px;
+  color: var(--ink-light);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* === SCREENS === */
+.screen {
+  display: none;
+  flex: 1;
+  animation: fadeUp 0.4s ease;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === LANDING === */
+.landing-features {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+
+.feature-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.feature-icon.blue { background: #eef2ff; }
+.feature-icon.green { background: var(--green-light); }
+.feature-icon.amber { background: var(--amber-light); }
+
+.feature-text h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.feature-text p {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.landing-note {
+  font-size: 13px;
+  color: var(--ink-muted);
+  text-align: center;
+  margin-top: auto;
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--border);
+}
+
+/* === BUTTONS === */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  display: block;
+  width: 100%;
+  padding: 14px 24px;
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.btn-secondary:hover {
+  border-color: var(--ink-muted);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === USER TYPE SELECTION === */
+.type-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 8px 0 32px;
+}
+
+.type-card {
+  padding: 24px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.type-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+
+.type-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.type-card-label {
+  font-size: 12px;
+  color: var(--ink-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.type-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.type-card p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 24px;
+}
+
+/* === PROGRESS BAR === */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin-bottom: 32px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* === QUESTION CARD === */
+.question-card {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.question-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.question-text {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.question-hint {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+  padding: 12px 16px;
+  background: var(--paper-warm);
+  border-radius: var(--radius-sm);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 15px;
+}
+
+.option:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.option.selected {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.option-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.option.selected .option-radio {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.option.selected .option-radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* === NAVIGATION === */
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  padding-bottom: 40px;
+}
+
+.nav-buttons .btn-secondary {
+  flex: 0 0 auto;
+  width: auto;
+  padding: 14px 24px;
+}
+
+.nav-buttons .btn-primary {
+  flex: 1;
+}
+
+/* === RESULTS === */
+.result-hero {
+  text-align: center;
+  padding: 40px 0 32px;
+}
+
+.result-grade {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+}
+
+.result-grade.grade-good { background: var(--green); }
+.result-grade.grade-medium { background: var(--amber); }
+.result-grade.grade-poor { background: var(--accent); }
+.result-grade.grade-bad { background: #8b2500; }
+
+.result-label {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'Noto Serif SC', serif;
+  margin-bottom: 8px;
+}
+
+.result-summary {
+  font-size: 15px;
+  color: var(--ink-light);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.result-details {
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-item {
+  background: white;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.result-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.result-dot.high { background: var(--red); }
+.result-dot.medium { background: var(--amber); }
+.result-dot.low { background: var(--green); }
+
+.result-item-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.result-item-text p {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+
+.result-cta {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  margin: 24px 0 40px;
+}
+
+.result-cta h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.result-cta p {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.result-cta .btn-primary {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 12px;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 480px) {
+  .container { padding: 0 16px; }
+  .header { padding: 28px 0 16px; }
+  .header h1 { font-size: 22px; }
+  .question-card { padding: 20px 18px; }
+  .section-title { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ========== SCREEN 0: LANDING ========== -->
+  <div class="screen active" id="screen-landing">
+    <div class="header">
+      <div class="header-badge">C计划 · Beta</div>
+      <h1>企业个人信息保护<br>合规快速自查</h1>
+      <p>用 2 分钟回答几个简单问题，了解你的企业在个人信息保护方面可能存在的风险</p>
+    </div>
+
+    <div class="landing-features">
+      <div class="feature-item">
+        <div class="feature-icon blue">📋</div>
+        <div class="feature-text">
+          <h3>第一轮：风险意识快检</h3>
+          <p>5-8 个简单问题，无需查阅资料，2 分钟内完成。免费获得初步风险评级。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon green">🔍</div>
+        <div class="feature-text">
+          <h3>第二轮：深度合规评估</h3>
+          <p>针对性的专业问题，需要您了解企业实际情况后填写。获取详细风险报告与整改建议。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon amber">💡</div>
+        <div class="feature-text">
+          <h3>第三轮：专家诊断服务</h3>
+          <p>由具有行政检查标准制定经验的专家，为您的企业进行一对一合规诊断。</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="showScreen('screen-type')">开始自查</button>
+
+    <div class="landing-note">
+      基于《个人信息保护法》及《个人信息保护合规审计管理办法》<br>
+      本工具仅供参考，不构成法律意见
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 1: USER TYPE ========== -->
+  <div class="screen" id="screen-type">
+    <div style="padding-top: 32px;">
+      <h2 class="section-title">首先，请选择最接近您情况的选项</h2>
+      <p class="section-subtitle">这将帮助我们为您提供最合适的评估问题</p>
+    </div>
+
+    <div class="type-cards">
+      <div class="type-card" data-type="A" onclick="selectType(this)">
+        <div class="type-card-label">类型 A</div>
+        <h3>我不太清楚企业是否涉及个人信息</h3>
+        <p>您是企业负责人或管理者，对"个人信息保护"这件事还不太了解，不确定自己的企业是否在处理个人信息。</p>
+      </div>
+
+      <div class="type-card" data-type="B" onclick="selectType(this)">
+        <div class="type-card-label">类型 B</div>
+        <h3>我知道企业在收集个人信息，但不确定是否合规</h3>
+        <p>您知道企业在日常经营中会接触到员工或客户的个人信息，但不确定目前的做法是否符合法律要求。</p>
+      </div>
+
+      <div class="type-card" data-type="C" onclick="selectType(this)">
+        <div class="type-card-label">类型 C</div>
+        <h3>我是企业的个人信息保护负责人</h3>
+        <p>您负责企业的个人信息保护工作，希望评估当前的合规状态，找出可能的薄弱环节。</p>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="btn-start-quiz" onclick="startQuiz()" style="opacity: 0.4; pointer-events: none;">
+      进入评估
+    </button>
+
+    <div style="height: 40px;"></div>
+  </div>
+
+  <!-- ========== SCREEN 2: QUESTIONS ========== -->
+  <div class="screen" id="screen-questions">
+    <div style="padding-top: 32px;">
+      <div class="progress-text">
+        <span id="progress-label">问题 1 / 6</span>
+        <span id="path-label" style="color: var(--accent);"></span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div id="question-container">
+      <!-- Questions rendered by JS -->
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn-secondary" id="btn-prev" onclick="prevQuestion()" style="display:none;">上一题</button>
+      <button class="btn-primary" id="btn-next" onclick="nextQuestion()" style="opacity: 0.4; pointer-events: none;">下一题</button>
+    </div>
+  </div>
+
+  <!-- ========== SCREEN 3: RESULTS ========== -->
+  <div class="screen" id="screen-results">
+    <div class="result-hero">
+      <div class="result-grade" id="result-grade"></div>
+      <div class="result-label" id="result-label"></div>
+      <p class="result-summary" id="result-summary"></p>
+    </div>
+
+    <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px;">各维度风险概览</h3>
+    <div class="result-details" id="result-details">
+      <!-- Rendered by JS -->
+    </div>
+
+    <div class="result-cta">
+      <h3>想知道具体问题在哪、怎么改？</h3>
+      <p>进入第二轮深度评估，获取涵盖 26 个审查要点的完整合规报告，包含具体整改建议。</p>
+      <button class="btn-primary" onclick="alert('第二轮评估功能即将上线，敬请期待！')">进入第二轮深度评估 →</button>
+    </div>
+
+    <button class="btn-secondary" onclick="restart()" style="margin-bottom: 40px;">重新开始</button>
+
+    <div class="footer">
+      C计划 · 企业个人信息保护合规自查工具 Beta 版<br>
+      本评估结果仅供参考，不构成法律意见
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ========== DATA ==========
+
+const questions = {
+  // PATH A: 不知道自己在处理个人信息的企业主
+  A: [
+    {
+      id: 'a1',
+      text: '你的企业是否保存着员工的身份证复印件、学历证书、家庭住址等信息？',
+      hint: '包括纸质档案和电子档案。大多数企业在员工入职时都会收集这些材料。',
+      category: '员工信息',
+      options: [
+        { text: '是的，有保存', value: 'yes', risk: 2 },
+        { text: '没有', value: 'no', risk: 0 },
+        { text: '不确定', value: 'unsure', risk: 1 }
+      ]
+    },
+    {
+      id: 'a2',
+      text: '你的企业是否通过纸质表格收集客户或来访者的信息，然后由工作人员录入系统？',
+      hint: '例如：来访登记表、客户信息登记表、服务申请表等。很多有前台或柜台的企业都有这种做法。',
+      category: '纸质信息收集',
+      options: [
+        { text: '是的', value: 'yes', risk: 2 },
+        { text: '没有', value: 'no', risk: 0 },
+        { text: '不适用，我们没有这类业务', value: 'na', risk: 0 }
+      ]
+    },
+    {
+      id: 'a3',
+      text: '你的企业是否让客户填写姓名、手机号来办理会员卡、积分卡或登记服务？',
+      hint: '包括线下门店的会员登记、小程序注册会员、扫码关注后填写信息等方式。',
+      category: '客户信息收集',
+      options: [
+        { text: '是的', value: 'yes', risk: 2 },
+        { text: '没有', value: 'no', risk: 0 },
+        { text: '不适用，我们不直接面向个人客户', value: 'na', risk: 0 }
+      ]
+    },
+    {
+      id: 'a4',
+      text: '你的企业官网或微信公众号上，是否有需要填写姓名、电话等信息的表单？',
+      hint: '例如"联系我们""在线咨询""预约体验""免费试用"等功能。',
+      category: '线上信息收集',
+      options: [
+        { text: '有', value: 'yes', risk: 2 },
+        { text: '没有', value: 'no', risk: 0 },
+        { text: '不确定，我没关注过', value: 'unsure', risk: 1 }
+      ]
+    },
+    {
+      id: 'a5',
+      text: '你的企业是否将员工或客户的信息提供给过第三方？',
+      hint: '例如：委托银行代发工资、使用外包人力资源公司、购买团体保险、使用第三方客户管理系统（CRM）等，这些都涉及向第三方提供个人信息。',
+      category: '第三方信息共享',
+      options: [
+        { text: '有过', value: 'yes', risk: 2 },
+        { text: '没有', value: 'no', risk: 0 },
+        { text: '不确定', value: 'unsure', risk: 1 }
+      ]
+    },
+    {
+      id: 'a6',
+      text: '你的企业办公场所或经营场所内是否安装了摄像头？',
+      hint: '包括用于安防监控的摄像头。如果摄像头拍摄范围涉及公共区域，还需要遵守公安机关的相关规定。',
+      category: '视频监控',
+      options: [
+        { text: '安装了', value: 'yes', risk: 2 },
+        { text: '没有安装', value: 'no', risk: 0 }
+      ]
+    },
+    {
+      id: 'a7',
+      text: '你的企业是否使用了指纹打卡、人脸识别门禁等设备？',
+      hint: '指纹和人脸属于"敏感个人信息"，法律对其收集和使用有更严格的要求。',
+      category: '生物识别信息',
+      options: [
+        { text: '有使用', value: 'yes', risk: 3 },
+        { text: '没有', value: 'no', risk: 0 }
+      ]
+    },
+    {
+      id: 'a8',
+      text: '你的企业员工是否会在工作群、企业微信或钉钉中发送客户的姓名、电话、地址等信息？',
+      hint: '例如销售人员在群里分享客户联系方式，或者客服人员转发客户信息给同事处理。',
+      category: '即时通讯中的信息流转',
+      options: [
+        { text: '有这种情况', value: 'yes', risk: 2 },
+        { text: '没有', value: 'no', risk: 0 },
+        { text: '不确定', value: 'unsure', risk: 1 }
+      ]
+    }
+  ],
+
+  // PATH B: 知道自己在收集个人信息但不确定合规性
+  B: [
+    {
+      id: 'b1',
+      text: '你的企业在收集个人信息时，是否告知了对方收集的目的和用途？',
+      hint: '例如：在收集员工信息时说明是用于劳动关系管理，在收集客户信息时说明是用于提供服务。告知方式可以是书面通知、隐私政策或口头说明。',
+      category: '告知义务',
+      options: [
+        { text: '有明确的书面告知', value: 'written', risk: 0 },
+        { text: '口头告知过', value: 'verbal', risk: 1 },
+        { text: '没有告知', value: 'no', risk: 3 },
+        { text: '不确定', value: 'unsure', risk: 2 }
+      ]
+    },
+    {
+      id: 'b2',
+      text: '你的企业是否制定了隐私政策或个人信息保护相关的内部制度？',
+      hint: '隐私政策是告知个人信息主体的对外文件，内部制度是规范企业内部人员如何处理个人信息的规则。',
+      category: '制度建设',
+      options: [
+        { text: '两者都有', value: 'both', risk: 0 },
+        { text: '只有隐私政策', value: 'privacy', risk: 1 },
+        { text: '只有内部制度', value: 'internal', risk: 1 },
+        { text: '都没有', value: 'none', risk: 3 }
+      ]
+    },
+    {
+      id: 'b3',
+      text: '你的企业是否知道自己处理了多少人的个人信息？',
+      hint: '这个数字很重要：如果你的企业处理超过 1000 万人的个人信息，法律要求必须每两年至少进行一次合规审计。',
+      category: '数据规模',
+      options: [
+        { text: '清楚，不超过 100 万人', value: 'small', risk: 0 },
+        { text: '清楚，100 万到 1000 万人之间', value: 'medium', risk: 1 },
+        { text: '清楚，超过 1000 万人', value: 'large', risk: 2 },
+        { text: '不清楚', value: 'unsure', risk: 2 }
+      ]
+    },
+    {
+      id: 'b4',
+      text: '当员工离职后，你的企业会如何处理该员工的个人信息？',
+      hint: '《个人信息保护法》规定，处理目的已实现或个人信息处理者已不再需要时，应当主动删除个人信息。',
+      category: '数据生命周期',
+      options: [
+        { text: '有明确的删除或归档流程', value: 'process', risk: 0 },
+        { text: '一般会保留，没有专门处理', value: 'keep', risk: 2 },
+        { text: '不确定怎么处理的', value: 'unsure', risk: 2 }
+      ]
+    },
+    {
+      id: 'b5',
+      text: '如果有人要求查看或删除你的企业所持有的他们的个人信息，你的企业有处理这类请求的流程吗？',
+      hint: '个人有权查阅、复制、更正、删除其个人信息。企业应当建立便捷的机制来响应这些请求。',
+      category: '个人权利保障',
+      options: [
+        { text: '有明确的响应流程', value: 'yes', risk: 0 },
+        { text: '没遇到过这种情况，也没有流程', value: 'no', risk: 2 },
+        { text: '不确定', value: 'unsure', risk: 1 }
+      ]
+    },
+    {
+      id: 'b6',
+      text: '你的企业是否对能够接触个人信息的员工进行过相关培训？',
+      hint: '例如：告知员工不得擅自复制、传播客户信息，不得将工作中接触的个人信息用于私人目的等。',
+      category: '人员管理',
+      options: [
+        { text: '定期培训', value: 'regular', risk: 0 },
+        { text: '偶尔提过', value: 'occasional', risk: 1 },
+        { text: '没有培训过', value: 'no', risk: 2 }
+      ]
+    },
+    {
+      id: 'b7',
+      text: '如果发生个人信息泄露事件（比如客户信息被黑客窃取、员工信息被误发），你的企业有应急预案吗？',
+      hint: '法律要求发生或可能发生个人信息泄露时，企业应立即采取补救措施，并通知监管部门和受影响的个人。',
+      category: '安全事件应对',
+      options: [
+        { text: '有书面的应急预案', value: 'yes', risk: 0 },
+        { text: '没有，但觉得应该有', value: 'no_aware', risk: 2 },
+        { text: '没考虑过这个问题', value: 'no', risk: 3 }
+      ]
+    }
+  ],
+
+  // PATH C: 个人信息保护负责人
+  C: [
+    {
+      id: 'c1',
+      text: '你的企业是否建立了个人信息分类分级制度？',
+      hint: '即对企业持有的个人信息进行梳理，区分一般个人信息和敏感个人信息，并针对不同级别的信息制定不同的保护措施。',
+      category: '分类分级',
+      options: [
+        { text: '已建立，并在执行', value: 'yes_active', risk: 0 },
+        { text: '有制度文件，但执行不到位', value: 'yes_inactive', risk: 1 },
+        { text: '还没有建立', value: 'no', risk: 3 }
+      ]
+    },
+    {
+      id: 'c2',
+      text: '你的企业是否完成了个人信息处理活动的全面梳理（数据映射/数据清单）？',
+      hint: '即清楚企业在哪些业务场景中、收集了哪些类型的个人信息、存储在哪里、谁有权访问、保留多长时间。',
+      category: '数据梳理',
+      options: [
+        { text: '已完成全面梳理', value: 'complete', risk: 0 },
+        { text: '部分完成', value: 'partial', risk: 1 },
+        { text: '还没有开始', value: 'no', risk: 3 }
+      ]
+    },
+    {
+      id: 'c3',
+      text: '你的企业在进行敏感个人信息处理前，是否进行过个人信息保护影响评估（PIA）？',
+      hint: '处理敏感个人信息（如人脸、指纹、医疗健康信息等）、向第三方提供个人信息、公开个人信息等情形，法律要求必须事前进行影响评估。',
+      category: '影响评估',
+      options: [
+        { text: '需要时都会做', value: 'always', risk: 0 },
+        { text: '做过部分', value: 'partial', risk: 1 },
+        { text: '还没有做过', value: 'no', risk: 3 },
+        { text: '不确定哪些场景需要做', value: 'unsure', risk: 2 }
+      ]
+    },
+    {
+      id: 'c4',
+      text: '对于企业使用的所有涉及个人信息处理的第三方服务（SaaS、外包等），是否都签订了包含个人信息保护条款的合同？',
+      hint: '委托他人处理个人信息的，应当与受托人约定处理目的、期限、方式、信息种类、保护措施以及双方的权利义务等。',
+      category: '第三方管理',
+      options: [
+        { text: '所有第三方都签了', value: 'all', risk: 0 },
+        { text: '主要的签了，部分小的没有', value: 'partial', risk: 1 },
+        { text: '大部分没有专门的信息保护条款', value: 'few', risk: 2 },
+        { text: '没有关注过这个问题', value: 'no', risk: 3 }
+      ]
+    },
+    {
+      id: 'c5',
+      text: '你的企业对个人信息的存储是否设置了明确的保留期限？到期后是否有删除机制？',
+      hint: '个人信息的保存期限应当为实现处理目的所必要的最短时间。超出保存期限的，应当予以删除。',
+      category: '存储管理',
+      options: [
+        { text: '有明确期限，有删除机制', value: 'yes', risk: 0 },
+        { text: '有期限规定，但删除执行不到位', value: 'partial', risk: 1 },
+        { text: '没有设置过保留期限', value: 'no', risk: 3 }
+      ]
+    },
+    {
+      id: 'c6',
+      text: '你的企业最近一年内是否进行过个人信息保护方面的内部审计或自查？',
+      hint: '定期审计是确保合规措施持续有效的重要手段。2025 年 5 月 1 日起施行的《个人信息保护合规审计管理办法》对审计提出了更明确的要求。',
+      category: '合规审计',
+      options: [
+        { text: '进行过系统的审计', value: 'audit', risk: 0 },
+        { text: '做过一些自查，但不系统', value: 'partial', risk: 1 },
+        { text: '没有做过', value: 'no', risk: 3 }
+      ]
+    },
+    {
+      id: 'c7',
+      text: '你的企业是否发生过个人信息安全事件？如果发生过，是否按规定进行了报告？',
+      hint: '安全事件包括数据泄露、系统被入侵、员工违规使用个人信息等。发生安全事件应及时通知监管部门和受影响的个人。',
+      category: '安全事件',
+      options: [
+        { text: '没有发生过', value: 'none', risk: 0 },
+        { text: '发生过，已按规定报告和处理', value: 'reported', risk: 0 },
+        { text: '发生过，但没有报告', value: 'unreported', risk: 3 },
+        { text: '不确定是否发生过', value: 'unsure', risk: 2 }
+      ]
+    }
+  ]
+};
+
+// ========== STATE ==========
+let currentType = null;
+let currentQuestionIndex = 0;
+let answers = {};
+
+// ========== NAVIGATION ==========
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function selectType(el) {
+  document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  currentType = el.dataset.type;
+  const btn = document.getElementById('btn-start-quiz');
+  btn.style.opacity = '1';
+  btn.style.pointerEvents = 'auto';
+}
+
+function startQuiz() {
+  if (!currentType) return;
+  currentQuestionIndex = 0;
+  answers = {};
+  showScreen('screen-questions');
+  renderQuestion();
+}
+
+function restart() {
+  currentType = null;
+  currentQuestionIndex = 0;
+  answers = {};
+  document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+  const btn = document.getElementById('btn-start-quiz');
+  btn.style.opacity = '0.4';
+  btn.style.pointerEvents = 'none';
+  showScreen('screen-landing');
+}
+
+// ========== QUESTION RENDERING ==========
+function renderQuestion() {
+  const qs = questions[currentType];
+  const q = qs[currentQuestionIndex];
+  const total = qs.length;
+
+  // Update progress
+  document.getElementById('progress-label').textContent = `问题 ${currentQuestionIndex + 1} / ${total}`;
+  document.getElementById('progress-fill').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+  
+  const pathLabels = { A: '认知唤醒路径', B: '风险初筛路径', C: '合规快检路径' };
+  document.getElementById('path-label').textContent = pathLabels[currentType];
+
+  // Render question card
+  const container = document.getElementById('question-container');
+  let optionsHtml = q.options.map((opt, i) => `
+    <div class="option ${answers[q.id] === i ? 'selected' : ''}" onclick="selectOption('${q.id}', ${i})">
+      <div class="option-radio"></div>
+      <span>${opt.text}</span>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="question-card">
+      <div class="question-number">问题 ${currentQuestionIndex + 1}</div>
+      <div class="question-text">${q.text}</div>
+      <div class="question-hint">${q.hint}</div>
+      <div class="options">${optionsHtml}</div>
+    </div>
+  `;
+
+  // Navigation buttons
+  document.getElementById('btn-prev').style.display = currentQuestionIndex === 0 ? 'none' : 'block';
+  
+  const btnNext = document.getElementById('btn-next');
+  const isLast = currentQuestionIndex === total - 1;
+  btnNext.textContent = isLast ? '查看结果' : '下一题';
+  
+  if (answers[q.id] !== undefined) {
+    btnNext.style.opacity = '1';
+    btnNext.style.pointerEvents = 'auto';
+  } else {
+    btnNext.style.opacity = '0.4';
+    btnNext.style.pointerEvents = 'none';
+  }
+}
+
+function selectOption(questionId, optionIndex) {
+  answers[questionId] = optionIndex;
+  
+  // Update UI
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.option')[optionIndex].classList.add('selected');
+  
+  const btnNext = document.getElementById('btn-next');
+  btnNext.style.opacity = '1';
+  btnNext.style.pointerEvents = 'auto';
+}
+
+function nextQuestion() {
+  const qs = questions[currentType];
+  if (currentQuestionIndex < qs.length - 1) {
+    currentQuestionIndex++;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  } else {
+    showResults();
+  }
+}
+
+function prevQuestion() {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    renderQuestion();
+    window.scrollTo(0, 0);
+  }
+}
+
+// ========== RESULTS ==========
+function showResults() {
+  const qs = questions[currentType];
+  let totalRisk = 0;
+  let maxRisk = 0;
+  let categoryResults = [];
+
+  qs.forEach(q => {
+    const selectedIndex = answers[q.id];
+    const selectedOption = q.options[selectedIndex];
+    const risk = selectedOption.risk;
+    const maxQ = Math.max(...q.options.map(o => o.risk));
+    totalRisk += risk;
+    maxRisk += maxQ;
+
+    let level, levelText;
+    if (risk === 0) { level = 'low'; levelText = '低风险'; }
+    else if (risk <= 1) { level = 'medium'; levelText = '中等风险'; }
+    else { level = 'high'; levelText = '高风险'; }
+
+    let description = '';
+    if (currentType === 'A') {
+      if (risk > 0) {
+        description = `你的企业在"${q.category}"方面存在个人信息处理活动，但可能尚未采取相应的保护措施。`;
+      } else {
+        description = `你的企业在"${q.category}"方面暂未发现明显的风险点。`;
+      }
+    } else if (currentType === 'B') {
+      if (risk >= 2) {
+        description = `你的企业在"${q.category}"方面可能存在合规缺口，建议尽快关注。`;
+      } else if (risk === 1) {
+        description = `你的企业在"${q.category}"方面有一定基础，但仍有改进空间。`;
+      } else {
+        description = `你的企业在"${q.category}"方面做得较好，继续保持。`;
+      }
+    } else {
+      if (risk >= 2) {
+        description = `"${q.category}"是当前合规体系中的薄弱环节，需要优先整改。`;
+      } else if (risk === 1) {
+        description = `"${q.category}"基本到位，但建议进一步完善。`;
+      } else {
+        description = `"${q.category}"已有较好的合规基础。`;
+      }
+    }
+
+    categoryResults.push({ category: q.category, level, levelText, description, risk });
+  });
+
+  // Calculate overall grade
+  const riskRatio = totalRisk / maxRisk;
+  let grade, gradeText, gradeClass, summary;
+
+  if (currentType === 'A') {
+    // For type A, even "yes" answers aren't necessarily bad - they indicate awareness needed
+    const yesCount = qs.filter(q => {
+      const opt = q.options[answers[q.id]];
+      return opt.value === 'yes';
+    }).length;
+
+    if (yesCount <= 2) {
+      grade = '优'; gradeClass = 'grade-good';
+      gradeText = '风险暴露较少';
+      summary = '根据初步评估，你的企业涉及的个人信息处理场景较少，但这并不意味着完全没有风险。建议进入第二轮评估，确认现有的个人信息处理活动是否合规。';
+    } else if (yesCount <= 4) {
+      grade = '良'; gradeClass = 'grade-medium';
+      gradeText = '存在需要关注的领域';
+      summary = '你的企业在多个场景中涉及个人信息处理，其中一些可能是你之前没有意识到的。好消息是，现在了解到这些就是改善的第一步。建议进入第二轮评估，了解具体的风险点。';
+    } else if (yesCount <= 6) {
+      grade = '中'; gradeClass = 'grade-poor';
+      gradeText = '多个领域需要关注';
+      summary = '你的企业在较多场景中涉及个人信息处理活动。以目前的法律要求来看，这些活动都需要相应的合规措施。强烈建议进入第二轮评估，系统了解各个风险点。';
+    } else {
+      grade = '差'; gradeClass = 'grade-bad';
+      gradeText = '需要高度重视';
+      summary = '你的企业在几乎所有常见场景中都涉及个人信息处理，但很可能尚未建立系统的保护措施。在 2025 年合规审计管理办法施行后，这些风险可能带来实际的法律后果。强烈建议尽快进行全面评估。';
+    }
+  } else {
+    if (riskRatio <= 0.2) {
+      grade = '优'; gradeClass = 'grade-good';
+      gradeText = '合规基础扎实';
+      summary = currentType === 'B' 
+        ? '你的企业在个人信息保护方面有较好的基础。建议通过第二轮评估进一步确认细节合规性。'
+        : '你的企业已建立较为完善的个人信息保护体系。建议通过深度评估查找可能遗漏的细节问题。';
+    } else if (riskRatio <= 0.45) {
+      grade = '良'; gradeClass = 'grade-medium';
+      gradeText = '部分领域需要加强';
+      summary = currentType === 'B'
+        ? '你的企业有一些合规措施，但在部分领域还有改进空间。建议进入第二轮评估，获取具体的改进建议。'
+        : '你的企业合规框架基本建立，但部分环节的执行力度或覆盖范围需要加强。建议进入深度评估获取详细整改方案。';
+    } else if (riskRatio <= 0.7) {
+      grade = '中'; gradeClass = 'grade-poor';
+      gradeText = '存在较多合规风险';
+      summary = currentType === 'B'
+        ? '你的企业在多个领域存在合规缺口，如不及时改善，可能面临法律风险。强烈建议进入第二轮评估。'
+        : '你的企业合规体系存在较多薄弱环节，需要系统性的整改。建议优先处理高风险项，并尽快进行全面的合规审计。';
+    } else {
+      grade = '差'; gradeClass = 'grade-bad';
+      gradeText = '合规风险较高';
+      summary = currentType === 'B'
+        ? '你的企业在个人信息保护方面存在明显不足，面临较高的法律风险。建议尽快系统性地开展合规建设。'
+        : '你的企业合规体系存在严重缺口，在即将施行的审计管理办法下面临较大的合规压力。建议立即启动整改。';
+    }
+  }
+
+  // Render results
+  document.getElementById('result-grade').className = `result-grade ${gradeClass}`;
+  document.getElementById('result-grade').textContent = grade;
+  document.getElementById('result-label').textContent = gradeText;
+  document.getElementById('result-summary').textContent = summary;
+
+  // Sort: high risk first
+  categoryResults.sort((a, b) => b.risk - a.risk);
+
+  const detailsHtml = categoryResults.map(r => `
+    <div class="result-item">
+      <div class="result-dot ${r.level}"></div>
+      <div class="result-item-text">
+        <h4>${r.category} · ${r.levelText}</h4>
+        <p>${r.description}</p>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('result-details').innerHTML = detailsHtml;
+  showScreen('screen-results');
+}
+</script>
+
+</body>
+</html>
